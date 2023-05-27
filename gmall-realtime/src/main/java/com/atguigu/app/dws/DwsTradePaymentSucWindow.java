@@ -59,7 +59,7 @@ public class DwsTradePaymentSucWindow {
                 JSONObject state = valueState.value();
                 if (state == null) {
                     valueState.update(jsonObject);
-                    context.timerService().deleteProcessingTimeTimer(context.timerService().currentProcessingTime() + 5000L);
+                    context.timerService().registerEventTimeTimer(context.timerService().currentProcessingTime() + 5000L);
                 } else {
                     String stateRt = state.getString("row_op_ts");
                     String curRt = jsonObject.getString("row_op_ts");
